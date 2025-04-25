@@ -58,7 +58,8 @@ router.delete("/:id", async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 });
-app.put("/transactions/:id", async (req, res) => {
+
+ router.put("/transactions/:id", async (req, res) => {
     try {
       const updated = await Transaction.findByIdAndUpdate(
         req.params.id,
@@ -70,7 +71,7 @@ app.put("/transactions/:id", async (req, res) => {
       res.status(500).json({ error: "Error updating transaction" });
     }
   });
-  app.delete("/transactions/:id", async (req, res) => {
+  router.delete("/transactions/:id", async (req, res) => {
     try {
       await Transaction.findByIdAndDelete(req.params.id);
       res.status(200).json({ message: "Transaction deleted" });
